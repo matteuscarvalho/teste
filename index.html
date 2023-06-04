@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quer namorar comigo?</title>
+    <style>
+       body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        background-color: #FA8072;
+      }
+
+      h1 {
+        font-size: 32px;
+        text-align: center;
+      }
+
+      .container {
+        width: 100vh;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+      }
+
+      button {
+        font-size: 20px;
+        margin: 0 8px;
+        border:none;
+        outline: none;
+        border-radius: 8px;
+        color: white;
+        background: #E5232E;
+        padding: 8px 16px;
+      }
+    </style>
+  </head>
+  <body>
+      <h1 id="texto">Quer namorar comigo?</h1>
+      <div class="buttons">
+        <button id="buttonYes">Sim</button>
+        <button id="buttonNo">Não</button>
+      </div>
+    <script>
+      const buttonNo = document.getElementById('buttonNo');
+      const buttonYes = document.getElementById('buttonYes');
+
+      buttonNo.addEventListener('mouseover', () => {
+        const direction = Math.random() > 0.5 ? 'left' : 'right';
+        const distance = Math.floor(Math.random() * 400) + 1;
+
+        buttonNo.style.position = 'absolute';
+        buttonNo.style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
+        buttonNo.style.left = `${Math.floor(Math.random() * window.innerWidth)}px`;
+        buttonNo.disabled = false;
+
+        if (direction === 'left') {
+          buttonNo.style.transform = translateX(`-${distance}px`);
+        } else {
+          buttonNo.style.transform = translateX(`${distance}px`);
+        }
+      });
+
+      buttonYes.addEventListener('click', () => {
+        buttonYes.style.display = 'none';
+        buttonNo.style.display = 'none';
+
+        document.querySelector('#texto').textContent = 'Estamos namorando :3333';
+      })
+      
+    </script>
+  </body>
+</html>
